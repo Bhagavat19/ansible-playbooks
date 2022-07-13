@@ -1,0 +1,21 @@
+---
+ - name: To uninstall package
+   hosts: all
+   become: true
+   tasks:
+     - name: uninstall httpd
+       service:
+         name: httpd
+         state: stopped
+
+     - name: remove httpd
+       yum:
+         name: httpd
+         state: removed
+         
+
+
+
+
+
+

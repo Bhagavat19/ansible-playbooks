@@ -1,0 +1,27 @@
+---
+# tasks file for bhagavat-role
+- name: package http install
+  yum:
+     name: httpd
+     state: installed
+  when: ansible_os_family == "RedHat"
+  notify: install httpd service
+
+- name: package apt install
+  apt:
+     name: apache2
+     state: present
+  when: ansible_os_family == "Debian"
+  notify: install apt service
+
+- name: Copy index.html file
+  copy:
+     src: /home/ansadmin/index.html
+     dest: /var/www/html
+
+
+
+
+
+
+

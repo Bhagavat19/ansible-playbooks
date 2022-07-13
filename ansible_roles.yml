@@ -1,0 +1,11 @@
+---
+ - name: Created playbook for ansible roles
+   hosts: all
+   become: true
+   roles:
+     - bhagavat-role
+
+
+
+
+

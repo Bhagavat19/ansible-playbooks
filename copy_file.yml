@@ -1,0 +1,14 @@
+---
+- name: This task copy file and give permission to that file
+  hosts: all
+  become: true
+  tasks:
+   - name: Copy file from server to nodes
+     copy:
+        src: /home/ansadmin/bhise.yml
+        dest: /home/ansadmin
+        owner: Bhagavat
+        group: bhagavat_admin
+        mode: 0777
+
+

@@ -1,0 +1,15 @@
+---
+- name: This is user creation ansible playbook
+  hosts: all
+  become: true
+  tasks:
+  - name: creating user ID
+    user: 
+      name: Bhagavat
+      state: present
+  - name: creating a group
+    group:
+      name: bhagavat_admin
+      state: present
+
+

@@ -1,0 +1,23 @@
+---
+ - name: Creating user using var
+   hosts: all
+   become: true
+   vars:
+     user: devmaster
+   tasks:
+     - name: Creating user {{ user }}
+       user:
+         name: "{{ user }}"
+
+
+
+
+
+
+
+
+
+
+
+
+

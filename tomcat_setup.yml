@@ -1,0 +1,67 @@
+---
+ - name: Installing Tomcat Applications
+   hosts: all
+   become: true
+   tasks:
+     # To install java application in redhat nodes
+
+    - name: Installing Java For Redhat
+      yum:
+        name: java
+        state: installed
+      when: ansible_os_family == "RedHat"
+
+      # To install jdk application in debian nodes
+
+    - name: Installing Java For Debian
+      apt:
+        name: default-jdk
+        state: present
+      when: ansible_os_family == "Debian"
+
+    # To Download any application from URL, we use get_url and URL:
+
+    - name: Downloading Tomcat version 8
+      get_url:
+        url: https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.81/bin/apache-tomcat-8.5.81.tar.gz
+        dest: /opt
+ 
+    # To unzip or extract file, we use module unarchive 
+
+    - name: Unzip or extract tar.gz tomact file
+      unarchive:
+        src: /opt/apache-tomcat-8.5.81.tar.gz
+        dest: /opt/
+        mode: 0777
+        remote_src: true
+
+     # To give permission to the files:
+
+    - name: Give excute permission to startup file
+      file:
+        path: /opt/apache-tomcat-8.5.81/bin/startup.sh
+        mode: 0777 
+
+      # To run the shell file command , we use below module
+
+    - name: To run shell command
+      shell:  ./startup.sh
+      args:
+          chdir: /opt/apache-tomcat-8.5.81/bin
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

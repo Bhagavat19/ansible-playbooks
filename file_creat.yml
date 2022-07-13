@@ -1,0 +1,29 @@
+---
+ - name: To create the file
+   hosts: all
+   become: true
+   tasks:
+    - name: File creating.....
+      file:
+        name: bhagavat_ansible
+        state: touch
+
+# Adding permission to exiting file and user and group
+
+ - name: To give permission to file
+   hosts: all
+   become: true
+   tasks: 
+   - name: File permission
+     file:
+       path: /home/ansadmin/index.html
+       owner: Bhagavat
+       group: bhagavat_admin
+       mode: 0777
+
+# To copy file from server    
+    #copy:
+     #src:
+     #dest:
+     #owner:
+     #mode:

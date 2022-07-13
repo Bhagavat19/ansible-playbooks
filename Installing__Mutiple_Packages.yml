@@ -1,0 +1,17 @@
+---
+ - name: Installing Packages
+   hosts: all
+   become: true
+   tasks:
+     - name: All packages are installing
+       yum:
+         name: ['git', 'tree', 'docker*', 'make', 'which']
+         state: installed
+
+
+
+
+
+
+
+

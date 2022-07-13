@@ -1,0 +1,19 @@
+---
+# handlers file for bhagavat-role
+ - name: install httpd service
+   service:
+     name: httpd
+     state: started
+
+
+ - name: install apt service
+   service:
+     name: apapche2
+     state: started
+
+
+
+
+
+
+

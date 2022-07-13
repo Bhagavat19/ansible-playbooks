@@ -1,0 +1,9 @@
+---
+- name: create a directory
+  hosts: all
+  become: true
+  tasks:
+  - name: Directory created
+    file:
+      path: /etc/bhagavt.config
+      state: directory

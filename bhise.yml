@@ -1,0 +1,29 @@
+---
+- name: This is user creation ansible playbook
+  hosts: all
+  become: true
+  tasks:
+  - name: creating user ID
+    user: 
+      name: Bhagavat
+      state: present
+
+- name: Installing git
+  hosts: all
+  become: true
+  tasks:
+  - name: Git
+    yum:
+      name: git
+      state: present
+
+- name: Install Docker
+  hosts: all
+  become: true
+
+  tasks:
+  - name: installing docker on this
+    yum:
+      name: docker
+      state: present
+

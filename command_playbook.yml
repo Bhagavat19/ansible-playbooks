@@ -1,0 +1,12 @@
+---
+ - name : Command playbook
+   hosts: all
+   become: true
+   tasks:
+     - name: givening new commands
+       command: yum install httpd
+       register: myoutput
+
+
+
+
