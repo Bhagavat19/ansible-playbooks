@@ -1,0 +1,67 @@
+---
+ - name: installing docker
+   hosts: all
+   become: true
+   tasks:
+     - name: Installing repostiry
+       yum_repository:
+         name: docker-repo
+         description: repo for docker
+         baseurl: https://download.docker.com/linux/centos/docker-ce.repo
+         enabled: yes
+         gpgcheck: no
+  
+     - name: install pip
+       yum:
+        name: python-pip
+        state: installed
+
+     - name: installing packages for docker
+       yum:
+         pkg:
+           - pip
+           - ca-certificates
+           - curl
+           - python3-pip
+           - python3-setuptools
+
+
+     - name: install certain python modules for docker
+       pip:
+         name: "{{ item.name }}"
+         version: "{{ item.version }}"
+         state: present
+       with_items:
+         - { name: docker-py, version: 1.10.6 }     
+
+     - name: Install docker
+       yum:
+         name: docker
+         state: installed
+
+     - name: starting docker service
+       service:
+         name: docker
+         state: started
+
+     - name: Enable docker service
+       service:
+         name: docker
+         enabled: yes
+
+
+     - name: creat containor
+       docker_container:
+           name: myweb
+           image: bhagavat19/web_image_1
+           state: started
+           recreate: yes
+           restart: yes
+           ports:
+           - "80:80"
+           - "81:80"
+    
+
+
+
+
