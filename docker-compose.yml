@@ -1,0 +1,23 @@
+version: '3'
+services:
+  web:
+    image: bhagavat19/web_image3
+    ports:
+      - "80:80"
+    tty: true
+    stdin_open: true
+  db:
+    image: mysql
+
+    environment:
+      MYSQL_DATABASE: employee
+      MYSQL_HOST: employee.cdwntx6dkmws.ap-south-1.rds.amazonaws.com
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: bhagavat
+      MYSQL_ROOT_PASSWORD: bhagavat
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+
+    ports: 
+     -  "3306:3306"
+
